@@ -100,6 +100,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private Preference mLogoCustomImage;
     private Preference mLogoStyle;
     private Preference mCustomCarrierTextPref;
+    private UnifiedStatusPreferenceController mUnifiedStatusController;
     private String mCustomCarrierText;
 
     @Override
@@ -107,6 +108,10 @@ public class StatusBar extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.lunaris_settings_status_bar);
+
+        mUnifiedStatusController = new UnifiedStatusPreferenceController(
+                getActivity(), findPreference(UnifiedStatusPreferenceController.PREFERENCE_KEY),
+                findPreference(UnifiedStatusPreferenceController.BATTERY_STYLE_KEY));
 
         ContentResolver resolver = getActivity().getContentResolver();
         Context mContext = getActivity().getApplicationContext();
@@ -187,6 +192,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+        mUnifiedStatusController.onResume();
         for (String key : new String[] { DYNAMIC_ISLAND, "network_speed_enabled" }) {
             SystemSettingPrimarySwitchPreference preference = findPreference(key);
             if (preference != null) {
@@ -200,6 +206,12 @@ public class StatusBar extends SettingsPreferenceFragment implements
                 preference.loadValue();
             }
         }
+    }
+
+    @Override
+    public void onPause() {
+        mUnifiedStatusController.onPause();
+        super.onPause();
     }
 
     @Override

@@ -24,6 +24,12 @@
     <PreferenceCategory
         android:title="@string/status_bar_icons_category_title">
 
+        <org.lunaris.settings.preferences.SecureSettingSwitchPreference
+            android:key="unified_status_indicator"
+            android:title="@string/unified_status_title"
+            android:summary="@string/unified_status_summary"
+            android:defaultValue="false" />
+
         <Preference
             android:key="status_bar_icons"
             android:title="@string/status_bar_icons_title"
@@ -211,13 +217,6 @@
             android:title="@string/status_bar_battery_style_title"
             android:entries="@array/status_bar_battery_style_entries"
             android:entryValues="@array/status_bar_battery_style_values"
-            android:defaultValue="0" />
-
-        <lineageos.preference.LineageSystemSettingListPreference
-            android:key="status_bar_show_battery_percent"
-            android:title="@string/status_bar_battery_percent_title"
-            android:entries="@array/status_bar_battery_percent_entries"
-            android:entryValues="@array/status_bar_battery_percent_values"
             android:defaultValue="0" />
 
         <Preference

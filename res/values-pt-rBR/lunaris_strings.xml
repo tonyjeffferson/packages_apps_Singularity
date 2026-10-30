@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unified_status_title">Status unificado</string>
+    <string name="unified_status_summary">Reúna bateria, Wi-Fi, rede móvel, Não Perturbe e modo avião em um único indicador de status</string>
+</resources>
